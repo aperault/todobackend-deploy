@@ -2,8 +2,8 @@ node {
   checkout scm
 
   stage 'Deploy application release'
-  writeFile file: 'extras.json', text: "{'image_tag':'${IMAGE_TAG}','ecs_tasks':[${TASKS}]}"
+  writeFile file: 'extras.json', text: "{'image_tag':'${IMAGE_TAG}','ecs_tasks':["migrate","collecstatic"],"stack_config":"true","debug":"true"}"
   withEnv(["VAULT_PASSWORD=${VAULT_PASSWORD}"]) {
-    sh 'ansible-playbook -vvv site.yml --vault-password-file vault.py -e \\'{"ecs_tasks":["migrate","collecstatic"],"stack_config":"true","debug":"true"}\\' '
+    sh 'ansible-playbook -vvv site.yml --vault-password-file vault.py -e "@extras.json" '
   }
 }

@@ -172,7 +172,7 @@ Resources:
     Properties:
       ContainerDefinitions:
         - Name: todobackend
-          Image: jmenga/todobackend
+          Image: poweriser/todobackend
           Memory: 450
           Environment:
             - Name: DJANGO_SETTINGS_MODULE
@@ -194,7 +194,7 @@ Resources:
             - "--master"
             - "--die-on-term"
         - Name: nginx
-          Image: jmenga/todobackend-nginx
+          Image: poweriser/todobackend-nginx
           Memory: 300
           PortMappings:
             - ContainerPort: "8000"
@@ -211,7 +211,7 @@ Resources:
     Properties:
       ContainerDefinitions:
         - Name: todobackend
-          Image: jmenga/todobackend
+          Image: poweriser/todobackend
           Memory: 245
           Environment:
             - Name: DJANGO_SETTINGS_MODULE
